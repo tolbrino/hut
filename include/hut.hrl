@@ -4,7 +4,7 @@
 -define(__HUT_HRL__, true).
 
 %% Supported logging levels (taken from lager):
--define(log_levels, [debug, info, notice, warning, error, critical, alert, emergency]).
+-define(log_levels, [info, notice, warning, error, critical, alert, emergency]).
 
 %% Helper macros
 -define(__fmt(__Fmt, __Args), lists:flatten(io_lib:format(__Fmt, __Args))).
@@ -13,8 +13,8 @@
 -ifdef(HUT_LAGER).
 -define(log_type, "lager").
 
--define(log(__Level, __Fmt), lager:__Level(__Fmt)).
--define(log(__Level, __Fmt, __Args), lager:__Level(__Fmt, __Args)).
+-define(log(__Level, __Fmt), lager:__Level([], __Fmt, [])).
+-define(log(__Level, __Fmt, __Args), lager:__Level([], __Fmt, __Args)).
 -define(log(__Level, __Fmt, __Args, __Opts), lager:__Level(__Opts, __Fmt, __Args)).
 
 -else.
@@ -35,7 +35,9 @@
                       __L when __L == debug; __L == notice ->
                           error_logger:info_report([{sublevel, __L}, {msg, ?__fmt(__Fmt, __Args)}, {options, __Opts}]);
                       __L2 when __L2 == critical; __L2 == alert; __L2 == emergency ->
-                          error_logger:error_report([{sublevel, __L2}, {msg, ?__fmt(__Fmt, __Args)}, {options, __Opts}])
+                          error_logger:error_report([{sublevel, __L2}, {msg, ?__fmt(__Fmt, __Args)}, {options, __Opts}]);
+                      _ ->
+                          ok
                   end
           end)())).
 -define(log(__Level, __Fmt), ?__log_error_logger(__Level, __Fmt, [], [])).

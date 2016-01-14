@@ -1,6 +1,6 @@
 %% -*- erlang -*-
 {application, hut, [
-  {description, "helper library for using various Erlang logging frameworks"},
+  {description, "helper library for making Erlang libraries logging framework agnostic"},
   {vsn, git},
   {registered, []},
   {applications, [kernel, stdlib]},
