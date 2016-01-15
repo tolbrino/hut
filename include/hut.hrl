@@ -4,7 +4,7 @@
 -define(__HUT_HRL__, true).
 
 %% Supported logging levels (taken from lager):
--define(log_levels, [info, notice, warning, error, critical, alert, emergency]).
+-define(log_levels, [debug, info, notice, warning, error, critical, alert, emergency]).
 
 %% Helper macros
 -define(__fmt(__Fmt, __Args), lists:flatten(io_lib:format(__Fmt, __Args))).
