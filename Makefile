@@ -8,7 +8,7 @@ else
 make = make
 endif
 
-ci::
+ci:: all
 	cd examples/basic && $(make) run_example_default
 	cd examples/basic && $(make) run_example_default_no_gate
 	cd examples/basic && $(make) run_example_default_debug_enabled
