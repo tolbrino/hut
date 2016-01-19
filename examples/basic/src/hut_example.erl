@@ -5,6 +5,8 @@
 -include_lib("hut/include/hut.hrl").
 
 start() ->
+    % Ensure hut is started so all app env are available
+    ok = application:start(hut),
     ?log(info, "Testing hut log levels with type ~s", [?log_type]),
     lists:map(
       fun

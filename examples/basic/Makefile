@@ -11,12 +11,30 @@ include ../../erlang.mk
 
 hut_dir 			= $(shell cd ../../ ; pwd)
 exec_run 			= hut_example
-exec 				= erl -pz ebin $(exec_opts) -run $(exec_run) -run init stop -noshell
+exec 				= erl -pz $(hut_dir)/ebin -pz ebin $(exec_opts) -run $(exec_run) -run init stop -noshell
 erlc_includes		= -pz $(hut_dir)
 
 .PHONY: run_example_default
 run_example_default: export ERLC_OPTS = $(erlc_includes)
 run_example_default: clean app
+	$(exec)
+
+.PHONY: run_example_default_no_gate
+run_example_default_no_gate: export ERLC_OPTS = $(erlc_includes)
+run_example_default_no_gate: exec_opts = -hut use_log_level_gate false
+run_example_default_no_gate: clean app
+	$(exec)
+
+.PHONY: run_example_default_debug_enabled
+run_example_default_debug_enabled: export ERLC_OPTS = $(erlc_includes)
+run_example_default_debug_enabled: exec_opts = -hut level debug
+run_example_default_debug_enabled: clean app
+	$(exec)
+
+.PHONY: run_example_default_warning_enabled
+run_example_default_warning_enabled: export ERLC_OPTS = $(erlc_includes)
+run_example_default_warning_enabled: exec_opts = -hut level warning
+run_example_default_warning_enabled: clean app
 	$(exec)
 
 .PHONY: run_example_ioformat
