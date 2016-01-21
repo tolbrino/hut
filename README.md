@@ -31,7 +31,7 @@ Supported Logging Backends
 - `io:format/2` as the default
 - no-op logging via `-DHUT_NONE`
 - SASL error_logger via `-DHUT_ERROR_LOGGER`
-- [Lager](https://github.com/basho/lager) via `-DHUT_LAGER`
+- [Lager](https://github.com/basho/lager) via `-DHUT_LAGER` (you may optionally specify a different log message sink by additionally defining `-DHUT_LAGER_SINK mysinkname`; the default message sink is `lager`)
 - custom callback module via `-DHUT_CUSTOM -DHUT_CUSTOM_CB mycbmod` (the module must provide the function `log(Level, Fmt, Args, Opts)`
 
 Examples
