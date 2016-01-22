@@ -13,9 +13,13 @@
 -ifdef(HUT_LAGER).
 -define(log_type, "lager").
 
--define(log(__Level, __Fmt), lager:__Level([], __Fmt, [])).
--define(log(__Level, __Fmt, __Args), lager:__Level([], __Fmt, __Args)).
--define(log(__Level, __Fmt, __Args, __Opts), lager:__Level(__Opts, __Fmt, __Args)).
+-ifndef(HUT_LAGER_SINK)
+-define(HUT_LAGER_SINK, lager).
+-endif.
+
+-define(log(__Level, __Fmt), ?HUT_LAGER_SINK:__Level([], __Fmt, [])).
+-define(log(__Level, __Fmt, __Args), ?HUT_LAGER_SINK:__Level([], __Fmt, __Args)).
+-define(log(__Level, __Fmt, __Args, __Opts), ?HUT_LAGER_SINK:__Level(__Opts, __Fmt, __Args)).
 
 -else.
 
