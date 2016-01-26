@@ -1,3 +1,5 @@
+[![BuildStatus](https://travis-ci.org/tolbrino/hut.svg?branch=master)](https://travis-ci.org/tolbrino/hut)
+
 Overview
 --------
 
