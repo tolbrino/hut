@@ -5,7 +5,7 @@ PROJECT_VERSION 	= 0.1.0
 DEPS = lager
 dep_lager_commit = 3.0.2
 
-all:: run_example_basic
+all:: run_example_default
 
 include ../../erlang.mk
 
@@ -14,14 +14,14 @@ exec_run 			= hut_example
 exec		 		= erl -pz ebin $(exec_opts) -run $(exec_run) -run init stop -noshell
 erlc_includes 		= -pz $(hut_dir)
 
-.PHONY: run_example_basic
-run_example_basic: export ERLC_OPTS = $(erlc_includes)
-run_example_basic: clean app
+.PHONY: run_example_default
+run_example_default: export ERLC_OPTS = $(erlc_includes)
+run_example_default: clean app
 	$(exec)
 
-.PHONY: run_example_error_logger
-run_example_error_logger: export ERLC_OPTS = -DHUT_ERROR_LOGGER $(erlc_includes)
-run_example_error_logger: clean app
+.PHONY: run_example_ioformat
+run_example_ioformat: export ERLC_OPTS = -DHUT_IOFORMAT $(erlc_includes)
+run_example_ioformat: clean app
 	$(exec)
 
 .PHONY: run_example_custom
@@ -29,9 +29,9 @@ run_example_custom: export ERLC_OPTS = -DHUT_CUSTOM -DHUT_CUSTOM_CB=$(PROJECT) $
 run_example_custom: clean app
 	$(exec)
 
-.PHONY: run_example_none
-run_example_none: export ERLC_OPTS = -DHUT_NONE $(erlc_includes)
-run_example_none: clean app
+.PHONY: run_example_noop
+run_example_noop: export ERLC_OPTS = -DHUT_NOOP $(erlc_includes)
+run_example_noop: clean app
 	$(exec)
 
 .PHONY: run_example_lager
@@ -40,6 +40,12 @@ run_example_lager: exec_opts = -run lager start
 run_example_lager: clean app
 	$(exec)
 
+.PHONY: run_example_lager_custom_sink
+run_example_lager_custom_sink: export ERLC_OPTS = -DHUT_LAGER -DHUT_LAGER_SINK=mysink +'{parse_transform, lager_transform}' +"{lager_extra_sinks, [mysink]}" $(erlc_includes)
+run_example_lager_custom_sink: exec_opts = -config app -run lager start
+run_example_lager_custom_sink: clean app
+	$(exec)
+
 .PHONY: compile_example_elixir
-compile_example_elixir: export ERLC_OPTS = -DHUT_ERROR_LOGGER $(erlc_includes)
+compile_example_elixir: export ERLC_OPTS = $(erlc_includes)
 compile_example_elixir: clean app
