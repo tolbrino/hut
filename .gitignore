@@ -1,2 +1,4 @@
 /ebin
 /hut.d
+/deps
+/.erlang.mk
