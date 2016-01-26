@@ -9,10 +9,10 @@ all:: run_example_default
 
 include ../../erlang.mk
 
-hut_dir 			!= cd ../../ ; pwd
-exec_run 			 = hut_example
-exec 				 = erl -pz ebin $(exec_opts) -run $(exec_run) -run init stop -noshell
-erlc_includes		 = -pz $(hut_dir)
+hut_dir 			= $(shell cd ../../ ; pwd)
+exec_run 			= hut_example
+exec 				= erl -pz ebin $(exec_opts) -run $(exec_run) -run init stop -noshell
+erlc_includes		= -pz $(hut_dir)
 
 .PHONY: run_example_default
 run_example_default: export ERLC_OPTS = $(erlc_includes)
