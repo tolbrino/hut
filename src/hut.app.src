@@ -6,5 +6,9 @@
   {applications, [kernel, stdlib]},
   {modules, []},
   {mod, []},
-  {env, []}
+  {env, []},
+  {maintainers, ["tolbrino"]},
+  {licenses, ["MIT"]},
+  {links, [{"Github", "https://github.com/tolbrino/hut"}]},
+  {build_tools, ["erlang.mk"]}
 ]}.
