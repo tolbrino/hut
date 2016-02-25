@@ -1,10 +1,14 @@
 %% -*- erlang -*-
 {application, hut, [
   {description, "helper library for making Erlang libraries logging framework agnostic"},
-  {vsn, git},
+  {vsn, "1.1.0"},
   {registered, []},
   {applications, [kernel, stdlib]},
   {modules, []},
   {mod, []},
-  {env, []}
+  {env, []},
+  {maintainers, ["tolbrino"]},
+  {licenses, ["MIT"]},
+  {links, [{"Github", "https://github.com/tolbrino/hut"}]},
+  {build_tools, ["erlang.mk"]}
 ]}.

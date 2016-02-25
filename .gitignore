@@ -2,3 +2,5 @@
 /hut.d
 /deps
 /.erlang.mk
+hexer
+hexer.config
