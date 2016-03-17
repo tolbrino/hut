@@ -6,7 +6,6 @@
   {registered, []},
   {applications, [kernel, stdlib]},
   {modules, []},
-  {mod, []},
   {env, []},
   {maintainers, ["tolbrino"]},
   {licenses, ["MIT"]},
