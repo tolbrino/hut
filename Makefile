@@ -1,6 +1,6 @@
 PROJECT = hut
 PROJECT_DESCRIPTION = helper library for making Erlang libraries logging framework agnostic
-PROJECT_VERSION = 1.1.0
+PROJECT_VERSION = 1.1.1
 
 BUILD_DEPS = hexer_mk
 dep_hexer_mk = git https://github.com/inaka/hexer.mk.git 1.1.0
