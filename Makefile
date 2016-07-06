@@ -23,4 +23,6 @@ ci:: all
 	cd examples/basic && $(make) run_example_lager
 	cd examples/basic && $(make) run_example_lager_custom_sink
 
+app:: rebar.config
+
 include erlang.mk
