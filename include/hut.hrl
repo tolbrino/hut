@@ -91,7 +91,9 @@
 
 -ifndef(OTP_RELEASE).
 % If none of the above options were defined and OTP version is below 21, default to SASL
+-ifndef(HUT_SASL).
 -define(HUT_SASL, true).
+-endif.
 -endif.
 
 -ifdef(HUT_SASL).
