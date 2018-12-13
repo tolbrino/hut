@@ -89,8 +89,14 @@
 
 -else.
 
-% If none of the above options was defined, we default to using OTP sasl's error_logger.
--define(log_type, "default").
+-ifndef(OTP_RELEASE).
+% If none of the above options were defined and OTP version is below 21, default to SASL
+-define(HUT_SASL, true).
+-endif.
+
+-ifdef(HUT_SASL).
+
+-define(log_type, "sasl").
 
 -define(log(__Level, __Fmt),
         ?__maybe_log(__Level, fun() -> hut:log(?log_type, __Level, __Fmt, [], []) end)).
@@ -99,10 +105,45 @@
 -define(log(__Level, __Fmt, __Args, __Opts),
         ?__maybe_log(__Level, fun() -> hut:log(?log_type, __Level, __Fmt, __Args, __Opts) end)).
 
+-else.
+
+% On OTP21+ use logger by default
+
+-define(log_type, "logger").
+
+-define(__hut_logger_metadata,
+        #{ mfa => {?MODULE, ?FUNCTION_NAME, ?FUNCTION_ARITY}
+         , file => ?FILE
+         , line => ?LINE
+         }).
+
+-define(log(__Level, __Fmt, __Args, __Opts),
+        logger:log(__Level, __Fmt ++ "; Opts ~p", __Args ++ [__Opts], ?__hut_logger_metadata)).
+-define(log(__Level, __Fmt, __Args),
+        logger:log(__Level, __Fmt, __Args, ?__hut_logger_metadata)).
+-define(log(__Level, __Fmt),
+        ?log(__Level, __Fmt, [])).
+
+% Structured report:
+-define(slog(__Level, __Data, __Meta),
+        logger:log(__Level, __Data, maps:merge(?__hut_logger_metadata, __Meta))).
+-define(slog(__Level, __Data),
+        ?slog(__Level, __Data, #{})).
+
 % End of all actual log implementation switches.
 -endif.
 -endif.
 -endif.
+-endif.
+-endif.
+
+-ifndef(slog).
+-define(slog(__Level, __Data),
+        ?log(__Level, "~p", [__Data])).
+
+-define(slog(__Level, __Data, __Meta),
+        ?log(__Level, "~p; ~p", [__Data, __Meta])).
+
 -endif.
 
 % End of log declarations

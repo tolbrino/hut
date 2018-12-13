@@ -19,6 +19,11 @@ run_example_default: export ERLC_OPTS = $(erlc_includes)
 run_example_default: clean app
 	$(exec)
 
+.PHONY: run_example_sasl
+run_example_sasl: export ERLC_OPTS = -DHUT_SASL $(erlc_includes)
+run_example_sasl: clean app
+	$(exec)
+
 .PHONY: run_example_default_no_gate
 run_example_default_no_gate: export ERLC_OPTS = $(erlc_includes)
 run_example_default_no_gate: exec_opts = -hut use_log_level_gate false
