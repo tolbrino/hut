@@ -1,13 +1,11 @@
+# vim:sw=2:et:
+
 dist: xenial
 sudo: false
 language: erlang
-before_script:
-  - kerl update releases
-  - kerl list releases
 script: "make ci"
 otp_release:
-    - 22.0-rc3
-    - 21.3
-    - 20.3
-    - 19.3
-    - 18.3
+  - 21.3.6
+  - 20.3.8.5
+  - 19.3
+  - 18.3
