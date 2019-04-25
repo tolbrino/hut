@@ -1,3 +1,4 @@
+dist: xenial
 sudo: false
 language: erlang
 before_script:
