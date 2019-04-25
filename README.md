@@ -66,7 +66,8 @@ erl -hut use_log_level_gate false
 Refer to the respective `Makefile` in each example for details.
 
 - `examples/basic` shows the use of all backends from an Erlang library
-- `examples/elixir` shows the using a `hut`-enabled Erlang library within an Elixir application
+- `examples/elixir` shows how to use a `hut`-enabled Erlang library within an Elixir application
+- `examples/rebar3` shows how to use `hut` in a `rebar3` project
 
 [travis]: https://travis-ci.org/tolbrino/hut
 [travis badge]: https://img.shields.io/travis/tolbrino/hut/master.svg?style=flat-square
