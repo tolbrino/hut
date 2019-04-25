@@ -3,9 +3,11 @@
 dist: xenial
 sudo: false
 language: erlang
-script: "make ci"
+
+# We aim to support the latest 3 major release versions
 otp_release:
   - 21.3.6
   - 20.3.8.5
   - 19.3
-  - 18.3
+
+script: "make ci"
