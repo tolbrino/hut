@@ -1,6 +1,6 @@
 PROJECT = hut
 PROJECT_DESCRIPTION = helper library for making Erlang libraries logging framework agnostic
-PROJECT_VERSION = 1.3.1
+PROJECT_VERSION = 1.3.0
 
 ifneq (,$(filter $(shell uname -s),OpenBSD NetBSD FreeBSD DragonFly))
 make = gmake

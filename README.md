@@ -33,7 +33,7 @@ The idea for `hut` came out of
 ## Supported Logging Backends
 
 - SASL `error_logger` as the default (on OTP20 and older)
-- `logger ` as the default on OTP21+
+- `logger` as the default on OTP21+
 - `io:format/2` via `-DHUT_IOFORMAT`
 - no-op logging via `-DHUT_NOOP`
 - [Lager](https://github.com/basho/lager) via `-DHUT_LAGER`
