@@ -8,17 +8,39 @@ else
 make = make
 endif
 
-ci:: all
-	cd examples/basic && $(make) run_example_default
-	cd examples/basic && $(make) run_example_sasl
-	cd examples/basic && $(make) run_example_default_no_gate
-	cd examples/basic && $(make) run_example_default_debug_enabled
-	cd examples/basic && $(make) run_example_default_warning_enabled
-	cd examples/basic && $(make) run_example_noop
-	cd examples/basic && $(make) run_example_ioformat
-	cd examples/basic && $(make) run_example_custom
-	cd examples/basic && $(make) run_example_lager
-	cd examples/basic && $(make) run_example_lager_custom_sink
+examples_basic := \
+	default \
+	sasl \
+	default_no_gate \
+	default_debug_enabled \
+	default_warning_enabled \
+	noop \
+	ioformat \
+	custom \
+	lager \
+	lager_custom_sink
+
+examples_rebar3 := \
+	default \
+	sasl \
+	noop \
+	lager
+
+ci:: test_examples_basic
+ci:: test_examples_rebar3
+
+test_examples_basic:: all
+	@echo "\n=== Run basic examples\n"
+	cd examples/basic && $(foreach test,$(examples_basic), \
+		echo "\n=== Run basic example: $(test)\n" && $(make) run_example_$(test) &&) \
+		echo "\n=== Finished running basic examples\n"
+
+
+test_examples_rebar3:: all
+	@echo "\n=== Run rebar3 examples\n"
+	cd examples/rebar3 && $(foreach test,$(examples_rebar3), \
+		echo "\n=== Run rebar3 example: $(test)\n" && $(make) run_example_$(test) &&) \
+		echo "\n=== Finished running rebar3 examples\n"
 
 app:: rebar.config
 
