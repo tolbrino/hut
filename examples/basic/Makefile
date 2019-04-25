@@ -3,7 +3,6 @@ PROJECT_DESCRIPTION = example of using various hut configurations
 PROJECT_VERSION 	= 0.1.0
 
 DEPS = lager
-dep_lager_commit = 3.0.2
 
 all:: run_example_default
 
