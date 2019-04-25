@@ -1,9 +1,10 @@
 sudo: false
 language: erlang
 before_script:
-  - kerl list installations
+  - kerl list releases
 script: "make ci"
 otp_release:
+    - 22.0-rc3
     - 21.3
     - 20.3
     - 19.3
