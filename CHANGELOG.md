@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.3.0](https://github.com/tolbrino/hut/tree/v1.3.0) (2019-04-26)
+[Full Changelog](https://github.com/tolbrino/hut/compare/v1.2.1...v1.3.0)
+
 - Use `logger` on OTP21 by default
 - Rename `default` log type to `sasl`
 - Add `?slog` macro for structured log messages
