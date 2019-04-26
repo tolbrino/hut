@@ -1,7 +1,0 @@
-/_build/
-/ebin/
-/rebar.config
-/rebar3
-/log/
-/erl_crash.dump
-/rebar3.crashdump

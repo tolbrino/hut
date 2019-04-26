@@ -10,5 +10,12 @@
   {maintainers, ["tolbrino"]},
   {licenses, ["MIT"]},
   {links, [{"Github", "https://github.com/tolbrino/hut"}]},
-  {build_tools, ["erlang.mk", "rebar", "rebar3"]}
+  {build_tools, ["erlang.mk", "rebar", "rebar3"]},
+  {include_files,
+   [
+    "Makefile",
+    "erlang.mk",
+    "CHANGELOG.md",
+    "examples"
+   ]}
 ]}.
