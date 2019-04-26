@@ -93,6 +93,7 @@ slog(R) ->
     ok.
 
 slog(R, M) ->
+    ?set_process_metadata(#{foo => bar}),
     ?slog(debug, R, M),
     ?slog(info, R, M),
     ?slog(notice, R, M),
