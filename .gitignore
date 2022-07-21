@@ -12,3 +12,5 @@ rebar3.crashdump
 /examples/rebar3/rebar.config
 /examples/basic/hut_example.d/
 /.direnv/
+/hut\.d
+/examples/basic/hut_example\.d

@@ -15,6 +15,8 @@ with pkgs;
 mkShell {
   buildInputs = [
     erlangR25
+    beam.packages.erlangR25.elixir_1_13
+    gnumake
 
     # custom pkg groups
     macosPkgs
