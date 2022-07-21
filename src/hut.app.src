@@ -7,16 +7,19 @@
   {applications, [kernel, stdlib]},
   {modules, []},
   {env, []},
-  {maintainers, ["tolbrino"]},
   {licenses, ["MIT"]},
   {links, [{"Github", "https://github.com/tolbrino/hut"}]},
   {build_tools, ["erlang.mk", "rebar3"]},
-  {include_files,
+  {files,
    [
-    "Makefile",
-    "erlang.mk",
     "CHANGELOG.md",
-    "examples",
-    "rebar.config"
+    "LICENSE",
+    "Makefile",
+    "README.md",
+    "erlang.mk",
+    "include/hut.hrl",
+    "rebar.config",
+    "src/hut.app.src",
+    "src/hut.erl"
    ]}
 ]}.
